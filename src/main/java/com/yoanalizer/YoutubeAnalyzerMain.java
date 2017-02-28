@@ -11,11 +11,6 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 
 @SpringBootApplication
 public class YoutubeAnalyzerMain {
-
-    private static final String APP_NAME = "youtubeanalyzer-159412";
-
-    private static final JsonFactory JSON_FACTORY = new JacksonFactory();
-
     @Bean
     public TaskExecutor taskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();

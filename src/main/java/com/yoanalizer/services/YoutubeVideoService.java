@@ -8,14 +8,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -36,8 +35,16 @@ import com.yoanalizer.repository.YoutubeVideoRepository;
 public class YoutubeVideoService {
 
     private static final Logger logger = LoggerFactory.getLogger(YoutubeVideoService.class);
-    private static final String SECRET = "!a81ne81n3hy#a.391!banaunwpl";
-    private static final String API_KEY = "AIzaSyA2Uel2GJUA2-QI_ZSGooigcULMkp_3gvo";
+
+    @Value("${youtube.apisecret}")
+    private String API_SECRET;
+
+    @Value("${youtube.apikey}")
+    private String API_KEY;
+
+    @Value("${python.scriptpath}")
+    private String SCRIPT_PATH;
+
     private static final int PARTITION = 20;
 
     @Autowired
@@ -88,7 +95,7 @@ public class YoutubeVideoService {
         return JWT.create()
                   .withExpiresAt(tomorrowDate)
                   .withClaim("id", query.getId())
-                  .sign(Algorithm.HMAC256(SECRET));
+                  .sign(Algorithm.HMAC256(API_SECRET));
     }
 
     public CommentQuery getStatusById(String id){
@@ -96,7 +103,7 @@ public class YoutubeVideoService {
     }
 
     public String verifyToken(String accessToken) throws UnsupportedEncodingException {
-        JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SECRET))
+        JWTVerifier verifier = JWT.require(Algorithm.HMAC256(API_SECRET))
                                   .build();
         try {
             verifier.verify(accessToken);
@@ -124,11 +131,9 @@ public class YoutubeVideoService {
             throw new VideoNotFoundException(commentQuery.getVid());
         }
 
-        Object[] data = { commentQuery.getVid(), commentQuery.getId() };
+        Object[] data = { SCRIPT_PATH, commentQuery.getVid(), commentQuery.getId() };
 
-        String scriptCommand = String.format(
-                "python /Users/lineplus/Develop/youtubeAnalyzer/youtubeCommentDownloader.py %s %s",
-                data);
+        String scriptCommand = String.format("python %s %s %s", data);
 
         Runtime.getRuntime().exec(scriptCommand);
         processQuery(commentQuery);
