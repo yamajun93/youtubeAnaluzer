@@ -158,38 +158,17 @@
 
       for (var i = 1;i < Object.keys(keywordsvalue).length;i++) {
         values_keys += keywordsvalue['kw'+i];
-      };
+      }
     }
 
-
-    $.ajax({
-             method: "GET",
-             dataType: "jsonp",
-             url: "http://94.177.171.96:8080/api/process?vid="+video_id+"&keywords="+values_keys
-           })
-        .success(function(token) {
-          //get token
-          console.log("TOKEN : "+ token);
-
-          /*$.ajax({
-           method: "GET",
-           dataType:"jsonp",
-           url: "http://94.177.171.96:8080/api/status?token="+token_result
-           })
-           .success(function(result) {
-           //get result
-           console.log("RESULT : "+result);
-           $('.modal').css('display','block');
-           });*/
-        });
-
+    $.get("/api/process?vid="+video_id+"&keywords="+values_keys, function( token ) {
+      console.log("TOKEN : "+ token);
+    });
   });
 
   $('.close').on('click',function(){
     $('.modal').css('display','none');
-  })
-
-
+  });
 
   var eg1 = new Easygraphs({
     container: document.getElementById('linear-chart'),
