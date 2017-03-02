@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title></title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="" />
+  <meta name="copyright" content="Adrian Perez Castillo - adrianperezcas.es All Rights Reserved" />
+  <link rel="stylesheet" type="text/css" href="/css/kickstart.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" media="all" />
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
+  <script src="/js/typed.min.js"></script>
+  <script src="/js/Easygraphs.min.js"></script>
+</head>
+<body>
+<!-- MODAL -->
+<div class="modal">
+  <div class="content">
+    <div class="col_12" style="margin:0;height: 100%;">
+      <span class="close">&times;</span>
+      <div class="col_6 info">
+        <div class="info-b">
+          <h1>Video title<span class="pink-color">41244 views</span></h1>
+
+          <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book...</h2>
+          <a href="#">Watch video</a>
+        </div>
+        <div class="opacity"></div>
+      </div>
+      <div class="col_6 stats">
+        <h1>Stats</h1>
+        <div class="results">
+          <p>Keywords #1</p>
+          <div class="w3-progress-container">
+            <div class="w3-progressbar" style="width:85%"></div><br/>
+          </div>
+
+          <p>Keywords #1</p>
+          <div class="w3-progress-container">
+            <div class="w3-progressbar" style="width:45%"></div><br/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="callout callout-top clearfix">
+
+  <div class="grid" style="position:relative;z-index:999">
+    <div class="col_6">
+      <div class="logo"><h1>you <span>Analizer</span></h1></div>
+      <h2 class="pink-color desc">An short description</h2>
+      <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book...</h2>
+      <div id="search">
+        <div class="form-data">
+          <input type="text" id="url-video" placeholder="Link here!" class="col_12" value="https://www.youtube.com/watch?v=6dva92TT-nA"/>
+          <i class="fa fa-chevron-right col_1"></i><input type="text" id="kw1" class="col_11" placeholder="Keywords #1"/>
+        </div>
+        <i class="fa fa-plus col_1 disable"></i><input type="text" class="col_11 disable" placeholder="Tap plus to add more keywords" disabled="disabled"/>
+        <button>Send</button>
+      </div>
+    </div>
+    <div class="col_6">
+      <div class="col_12">
+        <ul class="fRight">
+          <li><a href="#" class="active">HOME</a></li>
+          <li><a href="#">ABOUT</a></li>
+          <li><a href="#">How works</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <!-- <div class="window col_12">
+      <img src="img/tuto.png" width="65%">
+      <div class="content"></div>
+      </div> -->
+    </div>
+
+  </div>
+
+  <div class="cursor-bottom"><!-- <i class="fa fa-chevron-down animated bounce"></i> -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none">
+      <polygon points="100 0 100 10 0 10" fill="#fff"/>
+    </svg>
+
+  </div>
+
+  <div class="callout-bg"></div>
+  <!-- stars -->
+  <div class='solar-syst'></div>
+  <div id="linear-chart"></div>
+</section>
+
+
+<section class="col_12 no-margin about">
+  <div class="grid pb">
+    <div class="title">
+      <h1>About</h1>
+      <hr/>
+    </div>
+    <div class="section-content">
+
+      <div class="col_12 no-margin">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt sed ad possimus magnam maiores. Ipsam quas velit blanditiis debitis consequuntur mollitia assumenda nam obcaecati illo! Dolores deleniti animi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+
+  var count = 2;
+  var video_id = null;
+  var keywordsvalue = {};
+  lift();
+
+  $('#search i.disable').on('click',function(){
+
+    $('.form-data').append('<i class="fa fa-chevron-right col_1"></i><input type="text" class="col_11" id="kw'+count+'" placeholder="Keywords #'+count+'"/>');
+    count = count+1;
+  });
+
+
+
+  function lift(){
+    $(".desc").typed({
+                       strings: ["¿Quieres saber que dijo su público?", "En tán solo 1 mínuto", "¡Pruébalo ahora!"],
+                       typeSpeed: 34,
+                       callback: function(){
+                         lift();
+                       }
+                     });
+  }
+
+  $('#search button').on('click',function(){
+
+    keywordsvalue = {};
+
+    var total = $('.form-data input').length;
+
+    $(".form-data input").each(function(i) {
+
+      if(i === total -1 || i === 0){
+        keywordsvalue[$(this).attr("id")] = $(this).val();
+      }else{
+        keywordsvalue[$(this).attr("id")] = $(this).val()+',';
+      }
+    });
+
+    validateYouTubeUrl(keywordsvalue['url-video']);
+    //get keywords
+    var values_keys = "";
+
+    if(video_id != null){
+
+      for (var i = 1;i < Object.keys(keywordsvalue).length;i++) {
+        values_keys += keywordsvalue['kw'+i];
+      };
+    }
+
+
+    $.ajax({
+             method: "GET",
+             dataType: "jsonp",
+             url: "http://94.177.171.96:8080/api/process?vid="+video_id+"&keywords="+values_keys
+           })
+        .success(function(token) {
+          //get token
+          console.log("TOKEN : "+JSON.parse(token));
+
+          /*$.ajax({
+           method: "GET",
+           dataType:"jsonp",
+           url: "http://94.177.171.96:8080/api/status?token="+token_result
+           })
+           .success(function(result) {
+           //get result
+           console.log("RESULT : "+result);
+           $('.modal').css('display','block');
+           });*/
+        });
+
+  });
+
+  $('.close').on('click',function(){
+    $('.modal').css('display','none');
+  })
+
+
+
+  var eg1 = new Easygraphs({
+    container: document.getElementById('linear-chart'),
+    width: screen.width,
+    height: screen.height,
+
+
+    data: [{
+      name: 'Errors',
+      dots: {
+        color: 'rgb(246, 75, 47)'
+      },
+      line: {
+        width: 2,
+        color: 'rgb(246, 75, 47)',
+        fill: 'rgba(246, 75, 47, 0.5)'
+      },
+      values: [12, 22, 25, 23, 32, 34, 37, 30, 32, 40, 51, 56, 52, 70, 68, 72, 74, 78, 91, 92, 95, 96, 98, 121, 70, 78, 76, 68, 72, 71, 92]
+    }]
+  });
+  eg1.render();
+
+  function validateYouTubeUrl(url) {
+
+    if (url != undefined || url != '') {
+      var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+      var match = url.match(regExp);
+      if (match && match[2].length == 11) {
+        //GET ID VIDEO
+
+        video_id = url.split('v=')[1];
+
+        var ampersandPosition = video_id.indexOf('&');
+        if(ampersandPosition != -1) {
+          video_id = video_id.substring(0, ampersandPosition);
+          //console.log(video_id);
+        }
+
+      } else {
+        console.log("url not valida");
+        video_id = null;
+      }
+    }
+  }
+
+
+
+</script>
+
+
+</body>
+</html>
