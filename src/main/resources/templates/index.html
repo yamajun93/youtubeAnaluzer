@@ -251,16 +251,22 @@ if(video_id != null){
 }
 
 
-$.ajax({
-  method: "GET",
-  dataType: "jsonp",
-  url: "http://94.177.171.96:8080/api/process?vid="+video_id+"&keywords="+values_keys
-})
-.success(function(token) {
+$.get("/api/process?vid="+video_id+"&keywords="+values_keys, function( token ) {
 //get token
 console.log("TOKEN : "+token);
+//console.log("RESULT : "+result);
+$('.modal').css('display','block');
+btn_status = false;
+})
+.fail(function() {
+    //alert( "error" );
+    console.log(error);
+  $('.loader').css('display','none');
+  $('.modal2').css('display','block');
+  btn_status = false;
+});
 
-$.ajax({
+/*$.ajax({
   method: "GET",
   dataType:"jsonp",
   url: "http://94.177.171.96:8080/api/status?token="+token
@@ -271,9 +277,9 @@ console.log("RESULT : "+result);
 $('.modal').css('display','block');
 btn_status = false;
 });
-
-})
-.fail(function(error){
+*/
+//})
+/*.fail(function(error){
   console.log(error);
   $('.loader').css('display','none');
   $('.modal2').css('display','block');
@@ -284,7 +290,7 @@ btn_status = false;
   $('.loader').css('display','none');
   btn_status = false;
 });
-
+*/
 }else{
   //Avoid multiple clicks
   console.log("There's a running process, please wait ...");
