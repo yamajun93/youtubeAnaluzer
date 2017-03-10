@@ -187,7 +187,7 @@ hr {
     margin-bottom: 20px;
     border-top: 1px solid #eee;
 }
-.title h1 span{width:5px;height:5px;font-size: 1em;border-radius: 2em;background-color:#f02d73;color:#fff;}
+.title h1 span{font-size: 2em;opacity: .9;font-weight: 800}
 .no-margin{margin:0;}
 
 .img-holder {
@@ -338,6 +338,12 @@ svg {
   display: block;
   width: 100%;
 }
+.last-svg{
+    background-color:#fff;
+    position: relative;
+    opacity: 1;
+    z-index: 99;
+}
 .desc{
     position: relative;
     display: block;
@@ -464,7 +470,10 @@ hr {
     width: 100%;
     height: 100%;
     position: fixed;
-    z-index: 9999;
+    
+}
+.modal,.content{
+    z-index: 99999999;
 }
 .modal > .content{
     background-color:#fff;
@@ -529,4 +538,140 @@ hr {
     position: relative;
     z-index: 9999;
     background:#fff;
+}
+.contact{
+    color:#fff !important;
+    position: relative;
+    z-index: 999;
+    background:#272d3b;   
+}
+
+
+
+/* LOADERS */
+
+.loader {
+  color: #ffffff;
+  font-size: 25px;
+  overflow: hidden;
+  width: 1em;
+  height: 1em;
+  display: none;
+  margin-right: 20px;
+  border-radius: 50%;
+  position: relative;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+  animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+}
+@-webkit-keyframes load6 {
+  0% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+  }
+  20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+  }
+  38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+  }
+  100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+}
+@keyframes load6 {
+  0% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+  }
+  20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+  }
+  38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+  }
+  100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+}
+@-webkit-keyframes round {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes round {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.features > div{
+    display:block;position:relative;padding:15px;
+}
+.features > div:nth-child(2),.features > div:nth-child(5){
+    border-left:1.4px solid #eee;
+    border-right:1.4px solid #eee;
+}
+.features > div:hover{
+    background-color:#f02d73;
+    color:#fff;
+}
+
+.features i{
+    font-size: 2.7em;
+    opacity: .7;
+}
+
+.intro > ul,.intro > ul > li{display:block;padding:10px;}
+
+.footer{background-color:#363636;font-size: 14px;position: relative;padding:7px;}
+.footer > p{float:right;text-align: right;margin-right: 5px}
+
+
+.form{
+    background-color:#fff;
+    position: relative;
+}
+
+.contact-inf a{
+    font-size:2em;
+    
+    background-color:#f02d73;
+    color:#fff;
+    padding:12px;
+}
+.contact-inf a:hover{
+    background-color:#363636;
+    color:#f02d73;
+}
+#map{position: absolute;bottom:0;z-index:9;opacity:.3;width: 100%;height: 100%}
+
+.contact .col_6{
+    z-index: 999;position: relative;
 }
