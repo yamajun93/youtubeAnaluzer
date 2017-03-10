@@ -2,243 +2,458 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title></title>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="" />
   <meta name="copyright" content="Adrian Perez Castillo - adrianperezcas.es All Rights Reserved" />
-  <link rel="stylesheet" type="text/css" href="/css/kickstart.css" media="all" />
-  <link rel="stylesheet" type="text/css" href="/css/style.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="css/kickstart.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="style.css" media="all" />
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
-  <script src="/js/typed.min.js"></script>
-  <script src="/js/Easygraphs.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="js/typed.min.js"></script>
+  <script src="js/Easygraphs.min.js"></script>
+
+
+  <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyDbM8osGY_yFtJPZf72a3SmTj4Y5DdfGCw" async="" defer="defer" type="text/javascript"></script>
+
+
+
 </head>
 <body>
-<!-- MODAL -->
-<div class="modal">
-  <div class="content">
-    <div class="col_12" style="margin:0;height: 100%;">
-      <span class="close">&times;</span>
-      <div class="col_6 info">
-        <div class="info-b">
-          <h1>Video title<span class="pink-color">41244 views</span></h1>
-
-          <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book...</h2>
-          <a href="#">Watch video</a>
-        </div>
-        <div class="opacity"></div>
-      </div>
-      <div class="col_6 stats">
-        <h1>Stats</h1>
-        <div class="results">
-          <p>Keywords #1</p>
-          <div class="w3-progress-container">
-            <div class="w3-progressbar" style="width:85%"></div><br/>
+  <!-- MODAL NOTIF-->
+  <div class="modal2">
+    <div class="content">
+      <div class="col_12" style="margin:0;height: 100%;">
+        <span class="close">&times;</span>
+        <div class="center">
+          <i class="fa fa-warning"></i>
+          <h1 class="status">Ups, We could not find information, try again later</h1>
           </div>
-
-          <p>Keywords #1</p>
-          <div class="w3-progress-container">
-            <div class="w3-progressbar" style="width:45%"></div><br/>
-          </div>
-        </div>
       </div>
     </div>
   </div>
+  <!-- MODAL -->
+  <div class="modal">
+    <div class="content">
+      <div class="col_12" style="margin:0;height: 100%;">
+        <span class="close">&times;</span>
+        <div class="col_6 info">
+          <div class="info-b">
+            <h1>Video title<span class="pink-color">41244 views</span></h1>
+
+            <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book...</h2>
+            <a href="#">Watch video</a>
+          </div>
+          <div class="opacity"></div>
+        </div>
+        <div class="col_6 stats">
+          <h1>Stats</h1>
+          <div class="results col_12">
+            <p>Keywords #1</p>
+            <div class="w3-progress-container">
+              <div class="w3-progressbar" style="width:85%"></div><br>
+            </div>
+
+            <p>Keywords #1</p>
+            <div class="w3-progress-container">
+              <div class="w3-progressbar" style="width:45%"></div><br>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+  <section class="callout callout-top clearfix">
+
+    <div class="grid" style="position:relative;z-index:999">
+      <div class="col_6">
+        <div class="logo"><h1>you <span>Analizer</span></h1></div>
+        <h2 class="pink-color desc">An short description</h2>
+        <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book...</h2>
+        <div id="search" class="col_12">
+          <div class="form-data ">
+            <input type="text" id="url-video" placeholder="Link here!" class="col_12" value="https://www.youtube.com/watch?v=6dva92TT-nA"/>
+            <i class="fa fa-chevron-right col_1"></i><input type="text" id="kw1" class="col_11" placeholder="Keywords #1"/>
+          </div>
+          <i class="fa fa-plus col_1 disable"></i><input type="text" class="col_11 disable" placeholder="Tap plus to add more keywords" disabled/>
+          <button class="col_6">Send</button>
+          <div class="loader col_6"></div>
+        </div>
+      </div>
+      <div class="col_6">
+        <div class="col_12">
+          <ul class="fRight">
+            <li><a href="#" class="active">HOME</a></li>
+            <li><a href="#">How works</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+<!-- <div class="window col_12">
+<img src="img/tuto.png" width="65%">
+<div class="content"></div>
+</div> -->
+</div>  
+
 </div>
-<section class="callout callout-top clearfix">
 
-  <div class="grid" style="position:relative;z-index:999">
-    <div class="col_6">
-      <div class="logo"><h1>you <span>Analizer</span></h1></div>
-      <h2 class="pink-color desc">An short description</h2>
-      <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book...</h2>
-      <div id="search">
-        <div class="form-data">
-          <input type="text" id="url-video" placeholder="Link here!" class="col_12" value="https://www.youtube.com/watch?v=6dva92TT-nA"/>
-          <i class="fa fa-chevron-right col_1"></i><input type="text" id="kw1" class="col_11" placeholder="Keywords #1"/>
-        </div>
-        <i class="fa fa-plus col_1 disable"></i><input type="text" class="col_11 disable" placeholder="Tap plus to add more keywords" disabled="disabled"/>
-        <button>Send</button>
-      </div>
-    </div>
-    <div class="col_6">
-      <div class="col_12">
-        <ul class="fRight">
-          <li><a href="#" class="active">HOME</a></li>
-          <li><a href="#">ABOUT</a></li>
-          <li><a href="#">How works</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
-      <!-- <div class="window col_12">
-      <img src="img/tuto.png" width="65%">
-      <div class="content"></div>
-      </div> -->
-    </div>
+<div class="cursor-bottom"><!-- <i class="fa fa-chevron-down animated bounce"></i> -->
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none">
+    <polygon points="100 0 100 10 0 10" fill="#fff"/>
+  </svg>
 
-  </div>
+</div>
 
-  <div class="cursor-bottom"><!-- <i class="fa fa-chevron-down animated bounce"></i> -->
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none">
-      <polygon points="100 0 100 10 0 10" fill="#fff"/>
-    </svg>
-
-  </div>
-
-  <div class="callout-bg"></div>
-  <!-- stars -->
-  <div class='solar-syst'></div>
-  <div id="linear-chart"></div>
+<div class="callout-bg"></div>
+<!-- stars -->
+<div class='solar-syst'></div>
+<div id="linear-chart"></div>
 </section>
 
 
 <section class="col_12 no-margin about">
   <div class="grid pb">
     <div class="title">
-      <h1>About</h1>
-      <hr/>
-    </div>
-    <div class="section-content">
-
-      <div class="col_12 no-margin">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt sed ad possimus magnam maiores. Ipsam quas velit blanditiis debitis consequuntur mollitia assumenda nam obcaecati illo! Dolores deleniti animi.</p>
-      </div>
+      <h1>How<span class="pink-color">works</span></h1>
     </div>
   </div>
+  <div class="section-content">
+    <div class="grid">
+      <div class="col_6">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt sed ad possimus magnam maiores. Ipsam quas velit blanditiis debitis consequuntur mollitia assumenda nam obcaecati illo! Dolores deleniti animi.</p>
+        <div class="col_12 intro ">
+          <ul>
+            <li><i class="fa fa-check pink-color"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
+            <li><i class="fa fa-check pink-color"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
+            <li><i class="fa fa-check pink-color"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
+            <li><i class="fa fa-check pink-color"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>   
+    <div class="col_6 no-margin center features">
+      <div class="col_4">
+        <i class="fa fa-laptop"></i><p>Input url video</p>
+        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+      </div>
+      <div class="col_4">
+        <i class="fa fa-list-ol"></i><p>Input keywords</p>
+        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+      </div>
+      <div class="col_4">
+        <i class="fa fa-line-chart"></i><p>Results</p>
+        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+      </div>
+    </div>      
+  </div>
+
 </section>
 
 
 
-<script>
+<section class="col_12 no-margin contact">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" class="last-svg" preserveAspectRatio="none">
+    <polygon points="100 0 100 10 0 10" fill="#272d3b" />
+  </svg>
 
-  var count = 2;
-  var video_id = null;
-  var keywordsvalue = {};
-  lift();
+  <div class="grid pb">
+    <div class="title">
+      <h1>Contact<span class="pink-color">US</span></h1>
+    </div>
+  </div>
+  <div class="section-content">
+    <div class="grid">
+      <div class="col_6 contact-inf">
+        <p>We are currently in <strong class="pink-color">beta</strong> and there are probably problems, please be patient we are working as fast as possible. If you have any doubt, problem or any question do not forget to write us and we will answer you as soon as possible. ¡Enjoy!</p>
+        <div class="col_12 center">
+          <a href="#" class="col_3"><i class="fa fa-twitter"></i></a>
+          <a href="#" class="col_3"><i class="fa fa-facebook"></i></a>
+          <a href="#" class="col_3"><i class="fa fa-instagram"></i></a>
+          <a href="#" class="col_3"><i class="fa fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>   
+    <div class="col_6 grid">
+      <div class="form">
+        <input type="text" class="col_12" placeholder="Name & surname" />
+        <input type="text" class="col_12" placeholder="Mail" />
+        <textarea class="col_12"></textarea>
+        <button class="col_4">Send</button>
 
-  $('#search i.disable').on('click',function(){
+      </div>
+    </div>      
+  </div>
+  <div id="map"></div>
 
-    $('.form-data').append('<i class="fa fa-chevron-right col_1"></i><input type="text" class="col_11" id="kw'+count+'" placeholder="Keywords #'+count+'"/>');
-    count = count+1;
-  });
+</section>
+<section class="col_12 footer no-margin">
+  <p>Made with <i class="fa fa-heart pink-color"></i> by<br>Adrian Perez Castillo & Juan Bermudez Roldan<p>
+  </section>
 
+  <script>
 
+    var count = 2;
+    var video_id = null;
+    var keywordsvalue = {};
+    var btn_status = false;
 
-  function lift(){
-    $(".desc").typed({
-                       strings: ["¿Quieres saber que dijo su público?", "En tán solo 1 mínuto", "¡Pruébalo ahora!"],
-                       typeSpeed: 34,
-                       callback: function(){
-                         lift();
-                       }
-                     });
-  }
+    //typing animation
+    lift();
 
-  $('#search button').on('click',function(){
+    $('#search i.disable').on('click',function(){
 
-    keywordsvalue = {};
-
-    var total = $('.form-data input').length;
-
-    $(".form-data input").each(function(i) {
-
-      if(i === total -1 || i === 0){
-        keywordsvalue[$(this).attr("id")] = $(this).val();
-      }else{
-        keywordsvalue[$(this).attr("id")] = $(this).val()+',';
-      }
+      $('.form-data').append('<i class="fa fa-chevron-right col_1"></i><input type="text" class="col_11" id="kw'+count+'" placeholder="Keywords #'+count+'"/>');
+      count = count+1;
     });
 
-    validateYouTubeUrl(keywordsvalue['url-video']);
-    //get keywords
-    var values_keys = "";
-
-    if(video_id != null){
-
-      for (var i = 1;i < Object.keys(keywordsvalue).length;i++) {
-        values_keys += keywordsvalue['kw'+i];
-      };
+    function lift(){
+      $(".desc").typed({
+        strings: ["¿Quieres saber que dijo su público?", "En tán solo 1 mínuto", "¡Pruébalo ahora!"],
+        typeSpeed: 34,
+        callback: function(){
+          lift();
+        }
+      });
     }
 
+    $('#search button').on('click',function(){
 
-    $.ajax({
-             method: "GET",
-             dataType: "jsonp",
-             url: "http://94.177.171.96:8080/api/process?vid="+video_id+"&keywords="+values_keys
-           })
-        .success(function(token) {
-          //get token
-          console.log("TOKEN : "+ token);
+      if(!btn_status){
+        btn_status = true;
 
-          /*$.ajax({
-           method: "GET",
-           dataType:"jsonp",
-           url: "http://94.177.171.96:8080/api/status?token="+token_result
-           })
-           .success(function(result) {
-           //get result
-           console.log("RESULT : "+result);
-           $('.modal').css('display','block');
-           });*/
+        $('.loader').css('display','block');
+        keywordsvalue = {};
+
+        var total = $('.form-data input').length;
+
+        $(".form-data input").each(function(i) {
+
+          if(i === total -1 || i === 0){
+            keywordsvalue[$(this).attr("id")] = $(this).val();
+          }else{
+            keywordsvalue[$(this).attr("id")] = $(this).val()+',';
+          }
         });
 
-  });
+        validateYouTubeUrl(keywordsvalue['url-video']);   
+//get keywords
+var values_keys = "";
 
-  $('.close').on('click',function(){
-    $('.modal').css('display','none');
-  })
+if(video_id != null){
 
-
-
-  var eg1 = new Easygraphs({
-    container: document.getElementById('linear-chart'),
-    width: screen.width,
-    height: screen.height,
-
-
-    data: [{
-      name: 'Errors',
-      dots: {
-        color: 'rgb(246, 75, 47)'
-      },
-      line: {
-        width: 2,
-        color: 'rgb(246, 75, 47)',
-        fill: 'rgba(246, 75, 47, 0.5)'
-      },
-      values: [12, 22, 25, 23, 32, 34, 37, 30, 32, 40, 51, 56, 52, 70, 68, 72, 74, 78, 91, 92, 95, 96, 98, 121, 70, 78, 76, 68, 72, 71, 92]
-    }]
-  });
-  eg1.render();
-
-  function validateYouTubeUrl(url) {
-
-    if (url != undefined || url != '') {
-      var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
-      var match = url.match(regExp);
-      if (match && match[2].length == 11) {
-        //GET ID VIDEO
-
-        video_id = url.split('v=')[1];
-
-        var ampersandPosition = video_id.indexOf('&');
-        if(ampersandPosition != -1) {
-          video_id = video_id.substring(0, ampersandPosition);
-          //console.log(video_id);
-        }
-
-      } else {
-        console.log("url not valida");
-        video_id = null;
-      }
-    }
-  }
+  for (var i = 1;i < Object.keys(keywordsvalue).length;i++) {
+    values_keys += keywordsvalue['kw'+i];
+  };      
+}else{
+  $('.loader').css('display','none');
+}
 
 
+$.get("/api/process?vid="+video_id+"&keywords="+values_keys, function( token ) {
+//get token
+console.log("TOKEN : "+token);
+//console.log("RESULT : "+result);
+$('.modal').css('display','block');
+btn_status = false;
+})
+.fail(function() {
+    //alert( "error" );
+    console.log(error);
+  $('.loader').css('display','none');
+  $('.modal2').css('display','block');
+  btn_status = false;
+});
+
+/*$.ajax({
+  method: "GET",
+  dataType:"jsonp",
+  url: "http://94.177.171.96:8080/api/status?token="+token
+})
+.success(function(result) {
+//get result
+console.log("RESULT : "+result);
+$('.modal').css('display','block');
+btn_status = false;
+});
+*/
+//})
+/*.fail(function(error){
+  console.log(error);
+  $('.loader').css('display','none');
+  $('.modal2').css('display','block');
+  btn_status = false;
+})
+.done(function(status){
+  console.log("STATUS:"+status);
+  $('.loader').css('display','none');
+  btn_status = false;
+});
+*/
+}else{
+  //Avoid multiple clicks
+  console.log("There's a running process, please wait ...");
+}
+//end click
+});
+
+$('.close').on('click',function(){
+  $('.modal').css('display','none');
+  $('.modal2').css('display','none');
+  $('.loader').css('display','none');
+})
+
+
+
+var eg1 = new Easygraphs({
+  container: document.getElementById('linear-chart'),
+  width: screen.width,
+  height: screen.height,
+
+
+  data: [{
+    name: 'Errors',
+    dots: {
+      color: 'rgb(246, 75, 47)'
+    },
+    line: {
+      width: 2,
+      color: 'rgb(246, 75, 47)',
+      fill: 'rgba(246, 75, 47, 0.5)'
+    },
+    values: [12, 22, 25, 23, 32, 34, 37, 30, 32, 40, 51, 56, 52, 70, 68, 72, 74, 78, 91, 92, 95, 96, 98, 121, 70, 78, 76, 68, 72, 71, 92]
+  }]
+});
+eg1.render();
+
+//Validate url youtube
+function validateYouTubeUrl(url) {    
+
+  if (url != undefined || url != '') {        
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    if (match && match[2].length == 11) {
+//GET ID VIDEO
+
+video_id = url.split('v=')[1];
+
+var ampersandPosition = video_id.indexOf('&');
+if(ampersandPosition != -1) {
+  video_id = video_id.substring(0, ampersandPosition);
+//console.log(video_id);
+}
+
+} else {
+  console.log("url not valida");
+  video_id = null;
+  $('.loader').css('display','none');
+}
+}
+}
+
+//style maps
+
+var styleArray = [
+{elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+{elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+{elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+{
+  featureType: 'administrative.locality',
+  elementType: 'labels.text.fill',
+  stylers: [{color: '#d59563'}]
+},
+{
+  featureType: 'poi',
+  elementType: 'labels.text.fill',
+  stylers: [{color: '#d59563'}]
+},
+{
+  featureType: 'poi.park',
+  elementType: 'geometry',
+  stylers: [{color: '#263c3f'}]
+},
+{
+  featureType: 'poi.park',
+  elementType: 'labels.text.fill',
+  stylers: [{color: '#6b9a76'}]
+},
+{
+  featureType: 'road',
+  elementType: 'geometry',
+  stylers: [{color: '#38414e'}]
+},
+{
+  featureType: 'road',
+  elementType: 'geometry.stroke',
+  stylers: [{color: '#212a37'}]
+},
+{
+  featureType: 'road',
+  elementType: 'labels.text.fill',
+  stylers: [{color: '#9ca5b3'}]
+},
+{
+  featureType: 'road.highway',
+  elementType: 'geometry',
+  stylers: [{color: '#746855'}]
+},
+{
+  featureType: 'road.highway',
+  elementType: 'geometry.stroke',
+  stylers: [{color: '#1f2835'}]
+},
+{
+  featureType: 'road.highway',
+  elementType: 'labels.text.fill',
+  stylers: [{color: '#f3d19c'}]
+},
+{
+  featureType: 'transit',
+  elementType: 'geometry',
+  stylers: [{color: '#2f3948'}]
+},
+{
+  featureType: 'transit.station',
+  elementType: 'labels.text.fill',
+  stylers: [{color: '#d59563'}]
+},
+{
+  featureType: 'water',
+  elementType: 'geometry',
+  stylers: [{color: '#17263c'}]
+},
+{
+  featureType: 'water',
+  elementType: 'labels.text.fill',
+  stylers: [{color: '#515c6d'}]
+},
+{
+  featureType: 'water',
+  elementType: 'labels.text.stroke',
+  stylers: [{color: '#17263c'}]
+}
+];
+
+//map
+
+var myLatLng = {lat: 37.4084492, lng: -5.9673969};
+
+var mapOptions = {
+  center: new google.maps.LatLng(myLatLng),
+  zoom: 14,
+  mapTypeControl: false,
+  disableDefaultUI: true,
+  draggable: false,
+  zoomControl: false,
+  scrollwheel: false,
+  disableDoubleClickZoom: true,
+  styles: styleArray
+};
+
+
+var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
 </script>
-
-
 </body>
 </html>
